@@ -8,10 +8,6 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            categoryId: {
-                allowNull: false,
-                type: Sequelize.INTEGER
-            },
             title: {
                 type: Sequelize.STRING
             },
@@ -25,14 +21,6 @@ module.exports = {
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
-            },
-            updatedAt: {
-                allowNull: false,
-                type: Sequelize.DATE
-            },
-            deleted: {
-                type: Sequelize.BOOLEAN,
-                defaultValue: false
             }
         });
     },

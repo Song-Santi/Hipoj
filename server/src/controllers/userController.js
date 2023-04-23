@@ -65,11 +65,64 @@ let handEditUser = async (req, res) => {
     return res.status(200).json(message);
 }
 
+let handGetAllcodeByType = async (req, res) => {
+    try {
+        let data = await userService.getAllcodeByType(req.query.type);
+        return res.status(200).json(data);
+    } catch (error) {
+        return res.status(200).json({
+            errCode: -1,
+            errMessage: 'Error from server'
+        })
+    }
+}
+
+let handGetCategories = async (req, res) => {
+    try {
+        let data = await userService.getCategories();
+        return res.status(200).json(data);
+    } catch (error) {
+        return res.status(200).json({
+            errCode: -1,
+            errMessage: 'Error from server'
+        })
+    }
+}
+
+let handGetCollections = async (req, res) => {
+    try {
+        let data = await userService.getCollections();
+        return res.status(200).json(data);
+    } catch (error) {
+        return res.status(200).json({
+            errCode: -1,
+            errMessage: 'Error from server'
+        })
+    }
+}
+
+let handGetConnects = async (req, res) => {
+    try {
+        let data = await userService.getConnects();
+        return res.status(200).json(data);
+    } catch (error) {
+        return res.status(200).json({
+            errCode: -1,
+            errMessage: 'Error from server'
+        })
+    }
+}
+
 
 module.exports = {
     handLogin: handLogin,
     handGetAllUser: handGetAllUser,
     handCreateNewUser: handCreateNewUser,
     handDeleteUser: handDeleteUser,
-    handEditUser: handEditUser
+    handGetAllcodeByType: handGetAllcodeByType,
+    handEditUser: handEditUser.apply,
+    handGetCategories:handGetCategories,
+    handGetCollections:handGetCollections,
+    handGetConnects:handGetConnects
+    
 }

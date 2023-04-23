@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     Post.init({
-        categoryId: DataTypes.INTEGER,
         title: DataTypes.STRING,
         thumbnail: DataTypes.STRING,
         description: DataTypes.TEXT

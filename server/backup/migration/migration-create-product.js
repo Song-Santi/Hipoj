@@ -8,36 +8,26 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idCode: {
-        allowNull: false,
-        type: Sequelize.STRING(10)
-      },
       title: {
-        //allowNull: false,
+        allowNull: false,
         type: Sequelize.STRING
       },
       description: {
-        //allowNull: false,
+        allowNull: false,
         type: Sequelize.TEXT
       },
-      image: {
-        type: Sequelize.STRING
-      },
-      categoryId: {
-        //allowNull: false,
-        type: Sequelize.INTEGER
+      price: {
+        type: Sequelize.DECIMAL(6, 2)  // sửa thành 10,2
       },
       discount: {
         type: Sequelize.INTEGER
       },
-      buyingPrice: {
-        type: Sequelize.DECIMAL(10, 2)  
+      thumbnail: {
+        type: Sequelize.STRING
       },
-      sellingPrice: {
-        type: Sequelize.DECIMAL(10, 2)  
-      },
-      listingPrice: {
-        type: Sequelize.DECIMAL(10, 2)  
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -48,8 +38,8 @@ module.exports = {
         type: Sequelize.DATE
       },
       deleted: {
-        type: Sequelize.TINYINT(1),
-        defaultValue: 0
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       }
     });
   },

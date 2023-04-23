@@ -1,6 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+
     await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
@@ -31,9 +32,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(60)
       },
-      avatar: {
-        type: Sequelize.STRING
-      },
       company: {
         type: Sequelize.STRING(100)
       },
@@ -44,20 +42,20 @@ module.exports = {
         type: Sequelize.STRING
       },
       isAdmin: {
-        type: Sequelize.TINYINT(1),
+        type: Sequelize.BOOLEAN,
         defaultValue: false
       },
       createdAt: {
-        //allowNull: false,
+        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        //allowNull: false,
+        allowNull: false,
         type: Sequelize.DATE
       },
       deleted: {
-        type: Sequelize.TINYINT(1),
-        defaultValue: 0
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       }
     });
   },

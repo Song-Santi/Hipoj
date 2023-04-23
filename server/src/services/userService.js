@@ -148,6 +148,7 @@ let createNewUser = (data) => {
                     phone: data.phone,
                     email: data.email,
                     password: hashPasswordFromBcrypt,
+                    //avatar: avatar,
                     company: data.company,
                     website: data.website,
                     address: data.address,
@@ -211,6 +212,7 @@ let updateUserData = (data) => {
                 user.phone = data.phone;
                 user.email = data.email;
                 user.password = data.password;
+                user.avatar = data.avatar;
                 user.company = data.company;
                 user.website = data.website;
                 user.address = data.address;
@@ -232,10 +234,96 @@ let updateUserData = (data) => {
         }
     })
 }
+
+let getAllcodeByType = (typeInput) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if(!typeInput){
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing required parameter!'
+                })
+            }else{
+                let res = {};
+                let allcode = await db.Allcode.findAll({
+                    where: {type: typeInput},
+                    attributes:{
+                        exclude: ['createdAt','updatedAt']
+                    }
+                });
+                res.errCode = 0;
+                res.data = allcode;
+                resolve(res);
+            }
+
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+let getCategories = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let res = {};
+            let cate = await db.Category.findAll({
+                attributes:{
+                    exclude: ['createdAt','updatedAt']
+                }
+            });
+            res.errCode = 0;
+            res.data = cate;
+            resolve(res);
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+let getCollections = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let res = {};
+            let cate = await db.Collection.findAll({
+                attributes:{
+                    exclude: ['createdAt','updatedAt']
+                }
+            });
+            res.errCode = 0;
+            res.data = cate;
+            resolve(res);
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+let getConnects = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let res = {};
+            let cate = await db.Connect.findAll({
+                attributes:{
+                    exclude: ['createdAt','updatedAt']
+                }
+            });
+            res.errCode = 0;
+            res.data = cate;
+            resolve(res);
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
     getAllUsers: getAllUsers,
     createNewUser: createNewUser,
     deleteUser: deleteUser,
-    updateUserData: updateUserData
+    updateUserData: updateUserData,
+    getAllcodeByType:getAllcodeByType,
+    getCategories:getCategories,
+    getCollections:getCollections,
+    getConnects:getConnects
 }

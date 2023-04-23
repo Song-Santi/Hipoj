@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      fullname: {
+      fullName: {
         allowNull: false,
         type: Sequelize.STRING(100)
       },
@@ -29,18 +29,6 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      deleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
       }
     });
   },
